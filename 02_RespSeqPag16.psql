@@ -38,10 +38,15 @@ from information_schema.sequences;
 
 -- Inserindo em Obra
 insert into obra 
-values (nextval('sid_obra'), 'o001', 'Obra 001');
+values (nextval('sid_obra'), 'o001', 'Obra 001')
+returning id_obra;
 
 insert into obra 
-values (nextval('sid_obra'), 'o002', 'Obra 002');
+values (nextval('sid_obra'), 'o002', 'Obra 002')
+returning id_obra;
+
+insert into obra 
+values (nextval('sid_obra'), 'o003', 'Obra 003'); -- Note que não usamos o returning
 
 
 -- Inserindo em Máquina
