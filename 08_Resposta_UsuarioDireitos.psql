@@ -13,7 +13,7 @@ alter user userexe1 nologin;
 
 -- 3) Agora, desbloqueie o usuário userexe1 e tente novamente fazer login com ele por meio do psql.
 
-alter user userexe1 nologin;
+alter user userexe1 login;
 
 
 --4)Você ficou ficou encarregado de criar o ambiente para a instalação de um software de controle de processos empresariais denominado SIGASYS. Assim, crie um banco de dados denominado de SIGASYS e execute nele o script da base de dados da disciplina.
@@ -60,7 +60,14 @@ grant ALL PRIVILEGES on ALL TABLES IN SCHEMA PUBLIC to gerente;
 
 revoke all on cliente from analista;
 
--- 7) Apague (drop) o usuário userexe1. Caso ele possua objetos,  atribua a propriedade a outro usuário.
+-- 7) Crie um database de nome dbvendedor cujo proprietário seja o usuário vendedor já criado anteriormente. Após criar o database, entre nele com o usuário vendedor e crie uma tabela qualquer.
+
+create database dbvendedor owner=vendedor;
+psql -h 172.17.0.1 -U userexe1 -d dbvendedor;
+create table teste (id integer);
+
+
+-- 8) Apague (drop) o usuário userexe1. Caso ele possua objetos,  atribua a propriedade a outro usuário.
 
 revoke ALL PRIVILEGES ON ALL TABLES IN SCHEMA public from userexe1;
 drop user userexe1;
